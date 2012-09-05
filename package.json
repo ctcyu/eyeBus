@@ -5,19 +5,5 @@
     "version": "0.1", 
     "fullName": "eyeBus", 
     "id": "jid1-TC80N7qKIU1kZg", 
-    "description": "a basic add-on",
-"preferences": [
-        {
-            "type": "integer",
-            "name": "busRoute",
-            "value": 3,
-            "title": "bus route number"
-        },
-        {
-            "type": "integer",
-            "name": "busStop",
-            "value": 61337,
-            "title": "bus stop number" 
-        }
-    ]
+    "description": "a basic add-on"
 }

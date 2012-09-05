@@ -14,3 +14,10 @@ stopInput.addEventListener('keyup', function onkeyup(event){
 		self.port.emit("changeStop", stopInput.value);
 	}
 }, false);
+
+routeInput.addEventListener('keyup', function onkeyup(event){
+	if(event.keyCode == 13) {
+		self.port.emit("changeRoute", routeInput.value);
+	}
+}, false);
+

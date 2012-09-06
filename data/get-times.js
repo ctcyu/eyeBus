@@ -27,15 +27,15 @@ loadButton.addEventListener('click', function onclick(event){
 	self.port.emit("changeStop", stopInput.value);
 	self.port.emit("changeRoute", routeInput.value);	
 	self.port.emit("loadClicked");
-	var lrow = timesTable.insertRow(1);
-	lrow.insertCell(0).innerHTML = "loading...";
-	lrow.setAttribute("id", "loading");
+	//var lrow = timesTable.insertRow(1);
+	//lrow.insertCell(0).innerHTML = "loading...";
+	//lrow.setAttribute("id", "loading");
 }, false);
 
 self.port.on("searchDone", function (timesArr){
 	//delete the "loading" row
 	var lrow = document.getElementById("loading");
-	timesTable.deleteRow(lrow.rowIndex);
+	if(lrow != null) timesTable.deleteRow(lrow.rowIndex);
 	for(i = 0; i < timesArr.length; i++){
 		console.log(timesArr[i]);
 		var row = timesTable.insertRow(i+1);

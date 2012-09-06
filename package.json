@@ -5,5 +5,13 @@
     "version": "0.1", 
     "fullName": "eyeBus", 
     "id": "jid1-TC80N7qKIU1kZg", 
-    "description": "a basic add-on"
+    "description": "a basic add-on",
+    "preferences": [
+    {
+        "description": "Time before refreshing next TransLink bus time",
+        "name": "refreshInterval",
+        "type": "integer",
+        "value": 30,
+        "title": "Refresh Interval (minutes)"
+    }]
 }

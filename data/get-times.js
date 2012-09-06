@@ -21,3 +21,6 @@ routeInput.addEventListener('keyup', function onkeyup(event){
 	}
 }, false);
 
+self.port.on("searchDone", function (arg){
+	console.log(arg);
+});

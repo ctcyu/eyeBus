@@ -1,15 +1,55 @@
 <html>
 <style type="text/css" media="all">
-    textarea {
-      resize:none;
-    }
+		body, input, div, button, table {
+			font-size: 12px;
+			font-family: sans-serif
+		}
+		#container {
+			overflow: hidden;
+			width: 100%;
+			height: 100%;
+		}
+		#inputs {
+			width:40%;
+			height: 85%;
+			float:left;
+			border: 1px solid;
+			padding: 5px;
+			margin-bottom: 30px;
+		}
+		input{
+			text-align:right;
+		}
+		#bus-data{
+			width: 60%
+			height: 85%;
+			float:right;
+			padding-left: 10px;
+			margin-left: 5px;
+	 }
+	#times-table{
+		width: 100%;
+	}
+	#heading{
+		background: white;
+		color: blue;
+	}
   </style>	
 	<body>
-	<label>stop</label><input type="text" id="stop-input" size="5">
-	<label>bus</label><input type="text" id="route-input" size="3">
-	<button type="button" id="load-button">Load</button>	
-	<table id="times-table">
-	<tr><td id="loading">Loading...</td></tr>
-	</table>
+	<div id="container">
+	
+	<div id="inputs">
+		<label>Stop </label><input type="text" id="stop-input" size="5">
+		<label>Route</label><input type="text" id="route-input" size="3">
+		<button type="button" id="load-button">Load</button>	
+	</div>
+
+	<div id="bus-data">
+		<table id="times-table">
+		<tr id="heading"><td>Next Bus Times</td></tr>
+		</table>
+	</div>
+
+	</div>
 	</body>
 </html>

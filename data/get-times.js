@@ -1,6 +1,7 @@
 var stopInput = document.getElementById("stop-input");
 var routeInput = document.getElementById("route-input");
 var loadButton = document.getElementById("load-button");
+var timesTable = document.getElementById("times-table");
 
 self.port.on("loadStop", function(busStop){
 	stopInput.value = busStop;
@@ -23,18 +24,21 @@ routeInput.addEventListener('keyup', function onkeyup(event){
 }, false);
 
 loadButton.addEventListener('click', function onclick(event){
-	console.log("button clicked");
+	self.port.emit("changeStop", stopInput.value);
+	self.port.emit("changeRoute", routeInput.value);	
 	self.port.emit("loadClicked");
+	var lrow = timesTable.insertRow(1);
+	lrow.insertCell(0).innerHTML = "loading...";
+	lrow.setAttribute("id", "loading");
 }, false);
 
 self.port.on("searchDone", function (timesArr){
-	var timesTable = document.getElementById("times-table");
 	//delete the "loading" row
 	var lrow = document.getElementById("loading");
 	timesTable.deleteRow(lrow.rowIndex);
 	for(i = 0; i < timesArr.length; i++){
 		console.log(timesArr[i]);
-		var row = timesTable.insertRow(i);
+		var row = timesTable.insertRow(i+1);
 		var cell = row.insertCell(0);
 		cell.innerHTML = timesArr[i];
 	}

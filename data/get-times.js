@@ -33,6 +33,9 @@ loadButton.addEventListener('click', function onclick(event){
 		lrow.insertCell(0).innerHTML = "loading...";
 		lrow.setAttribute("id", "loading");
 	}
+	for(i=2; i<timesTable.rows.length;i++){
+		timesTable.rows.item(i).setAttribute("style", "color:#C0C0C0");
+	}
 }, false);
 
 self.port.on("searchDone", function (timesArr){

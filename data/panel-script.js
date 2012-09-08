@@ -45,16 +45,19 @@ self.port.on("searchDone", function (message){
 		timesTable.deleteRow(-1);
 	}
 	timesArr = message[2];
-	var row;
-	var cell;
-	for(i = 0; i < timesArr.length; i++){
-		console.log(timesArr[i]);
-		row = timesTable.insertRow(i+1);
+		var row;
+		var cell;
+		for(i = 0; i < timesArr.length; i++){
+			if(timesArr[i] != "") {
+				console.log(timesArr[i]);
+				row = timesTable.insertRow(i+1);
+				cell = row.insertCell(0);
+				cell.innerHTML = timesArr[i] + "m";
+			}
+		}
+		row = timesTable.insertRow(1);
 		cell = row.insertCell(0);
-		cell.innerHTML = timesArr[i];
-	}
-	row = timesTable.insertRow(1);
-	cell = row.insertCell(0);
-	cell.innerHTML = message[0] + ":" + message[1];
-	cell.setAttribute("style", "font-style:italic");
+		cell.innerHTML = message[0] + ":" + message[1];
+		cell.setAttribute("style", "font-style:italic");
+	
 });

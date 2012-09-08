@@ -1,11 +1,11 @@
 {
-    "name": "eyebus", 
+    "name": "eyeBus", 
     "license": "MPL 2.0", 
-    "author": "", 
+    "author": "Christine Yu", 
     "version": "0.1", 
-    "fullName": "eyeBus", 
+    "fullName": "EyeBus Vancouver", 
     "id": "jid1-TC80N7qKIU1kZg", 
-    "description": "a basic add-on",
+    "description": "Translink's Next Bus feature is useful but really slow. Let this add-on automatically search for the next arrival time of your next Vancouver area bus, when you start Firefox and display it to you in the Add-ons bar. Refresh interval can be set in preferences.",
     "preferences": [
     {
         "description": "Time before refreshing next TransLink bus time",

@@ -1,0 +1,1 @@
+A Firefox extension made with the Add-on SDK: Translink's Next Bus feature is useful but really slow. Let this add-on automatically search for the next arrival time of your next Vancouver area bus, when you start Firefox and display it to you in the Add-ons bar. Refresh interval can be set in preferences.

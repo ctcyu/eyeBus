@@ -23,6 +23,10 @@ routeInput.addEventListener('keyup', function onkeyup(event){
 	}
 }, false);
 
+/**
+ * When the Load button is clicked, grey out existing table and show the words Loading...
+ * Then search the new stop and route numbers for the next bus at the current time
+ */
 loadButton.addEventListener('click', function onclick(event){
 	self.port.emit("changeStop", stopInput.value);
 	self.port.emit("changeRoute", routeInput.value);	
@@ -30,38 +34,41 @@ loadButton.addEventListener('click', function onclick(event){
 	var lrow = document.getElementById("loading");
 	if(lrow == null) {
 		var lrow = timesTable.insertRow(1);
-		lrow.insertCell(0).innerHTML = "loading...";
+		//lrow.insertCell(0).innerHTML = "loading...";
 		lrow.setAttribute("id", "loading");
+		$("#loading").text("Loading...");
 	}
-	for(i=2; i<timesTable.rows.length;i++){
-		timesTable.rows.item(i).setAttribute("style", "color:#C0C0C0");
-	}
+	$(".time-item, .busnum-item").attr("style", "color:#C0C0C0");
 }, false);
 
+/**
+ * Listens for searchDone event, and updates the panel with new bus times
+ * @param message an array such that message[0]:stop number message[1]: bus route message[2]: an array of times
+ */
 self.port.on("searchDone", function (message){
 	//delete all rows
 	var numRows = timesTable.rows.length
 	for(i = 1; i< numRows; i++){
 		timesTable.deleteRow(-1);
 	}
+	//update times table
 	timesArr = message[2];
-		var row;
-		var cell;
+		$("#times-table").find("tbody").append($("<tr>")
+																		.append($("<td>")
+																		.text(message[0] + ":" + message[1])
+																		.attr("style", "font-style:italic")
+																		.attr("class", "busnum-item")
+																		)
+															);
+
 		for(i = 0; i < timesArr.length; i++){
 			if(timesArr[i] != "") {
-				//row = timesTable.insertRow(i+1);
-				//cell = row.insertCell(0);
-				//cell.innerHTML = timesArr[i] + "m";
 				$("#times-table").find("tbody").append($("<tr>")
 																				.append($("<td>")
 																				.text(timesArr[i] + "m")
+																				.attr("class", "time-item")
 																				)
 																	);
 			}
-		}
-		row = timesTable.insertRow(1);
-		cell = row.insertCell(0);
-		cell.innerHTML = message[0] + ":" + message[1];
-		cell.setAttribute("style", "font-style:italic");
-	
+		}	
 });

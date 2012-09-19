@@ -49,9 +49,14 @@ self.port.on("searchDone", function (message){
 		var cell;
 		for(i = 0; i < timesArr.length; i++){
 			if(timesArr[i] != "") {
-				row = timesTable.insertRow(i+1);
-				cell = row.insertCell(0);
-				cell.innerHTML = timesArr[i] + "m";
+				//row = timesTable.insertRow(i+1);
+				//cell = row.insertCell(0);
+				//cell.innerHTML = timesArr[i] + "m";
+				$("#times-table").find("tbody").append($("<tr>")
+																				.append($("<td>")
+																				.text(timesArr[i] + "m")
+																				)
+																	);
 			}
 		}
 		row = timesTable.insertRow(1);
